@@ -1,0 +1,31 @@
+import java.util.Scanner;
+public class Intrest {
+    public static void main(String[] args){
+        SiCi calculate = new SiCi();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the principal");
+        double principal = sc.nextDouble();
+        System.out.println("Enter the time");
+        int time = sc.nextInt();
+        System.out.println("Enter the rate");
+        double rate = sc.nextInt();
+
+        double simpleInterest = calculate.simpleInterest(principal, time, rate);
+        System.out.println("Simple interest: " + simpleInterest);
+
+        double compoundInterest = calculate.compoundInterest(principal, time, rate);
+        System.out.println("Compound interest: " + compoundInterest);
+    }
+}
+class SiCi{
+    public double simpleInterest(double principalAmount,int time,double interestRate){
+        double intrest = (principalAmount * time * interestRate) / 100;
+        return intrest;
+    }
+    public double compoundInterest(double principalAmount,int time,double interestRate){
+        double amount = principalAmount * Math.pow(1 + (interestRate / 100), time);
+        double intrest = amount - principalAmount;
+        return intrest;
+    }
+
+}
